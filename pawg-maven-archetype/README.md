@@ -1,3 +1,9 @@
+### Archetype creates a module that follows hexagonal principles.
+
+Build it with `mvn clean install`.
+
+Use it by executing below command in PowerShell. Adjust it to bash or cmd.
+
 ```powershell
 mvn archetype:generate `
     "-DarchetypeGroupId=pawg.maven.archetypes" `

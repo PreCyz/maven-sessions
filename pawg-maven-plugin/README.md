@@ -1,4 +1,9 @@
-# How to use it in the project?
+### Custom maven plugin lists all resources defined in module.
+First build it with `mvn clean install`.
+
+### How to use it in the project?
+
+Add below configuration to the module's `pom.xml`.
 
 ```xml
 <build>
