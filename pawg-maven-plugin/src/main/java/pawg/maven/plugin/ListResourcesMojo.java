@@ -3,7 +3,6 @@ package pawg.maven.plugin;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -24,10 +23,17 @@ public class ListResourcesMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
 
+    //Custom parameter
+    // property = "list.header" allows override it from command line: -Dlist.header="My value"
+    @Parameter(property = "list.header", defaultValue = "LISTING RESOURCES (Default Header)")
+    private String headerText;
+
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() throws MojoExecutionException {
         getLog().info("-------------------------------------------------------");
-        getLog().info(" LISTING RESOURCES FOR MODULE: " + project.getArtifactId());
+        getLog().info(" " + headerText);
+        getLog().info(" Module: " + project.getArtifactId());
+
         getLog().info("-------------------------------------------------------");
 
         List<Resource> resources = project.getResources();
